@@ -7,18 +7,18 @@
 <body class="bg-light">
 
 <div class="container mt-5">
+    <div class="card p-4 shadow">
 
-    <div class="card shadow p-4">
-        <h2 class="mb-4 text-center">Edit Activity</h2>
+        <h2 class="mb-3">Edit Activity</h2>
 
         <form method="POST">
             <input type="text" name="activity" class="form-control mb-3" value="{{ activity[1] }}" required>
-            <button type="submit" class="btn btn-success w-100">Save Changes</button>
+            <button class="btn btn-success w-100">Save Changes</button>
         </form>
 
-        <a href="/?filter={{ filter_type }}" class="btn btn-link mt-3">← Back</a>
-    </div>
+        <a href="/?filter={{ filter_type }}" class="btn btn-link mt-3">Back</a>
 
+    </div>
 </div>
 
 </body>
