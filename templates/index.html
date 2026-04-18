@@ -7,23 +7,31 @@
 <body class="bg-light">
 
 <div class="container mt-5">
+
     <div class="card shadow p-4">
+        <h1 class="text-center mb-4">Daily Activity Journal</h1>
 
-        <div class="d-flex justify-content-between mb-3">
-            <h2>Activity Journal</h2>
-            <a href="/logout" class="btn btn-danger">Logout</a>
-        </div>
-
-        <div class="mb-3">
+        <!-- Filter Buttons -->
+        <div class="text-center mb-3">
             <a href="/?filter=today" class="btn btn-outline-primary me-2">Today</a>
             <a href="/?filter=all" class="btn btn-outline-secondary">All</a>
         </div>
 
+        <!-- Form -->
         <form method="POST" class="d-flex mb-4">
             <input type="text" name="activity" class="form-control me-2" placeholder="What are you doing?" required>
-            <button class="btn btn-primary">Add</button>
+            <button type="submit" class="btn btn-primary">Add</button>
         </form>
 
+        <h5 class="mb-3">
+            {% if filter_type == "today" %}
+                Today's Activities
+            {% else %}
+                All Activities
+            {% endif %}
+        </h5>
+
+        <!-- Activity List -->
         <ul class="list-group">
             {% for activity in activities %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -37,15 +45,15 @@
                         <a href="/edit/{{ activity[0] }}?filter={{ filter_type }}" class="btn btn-sm btn-warning me-2">Edit</a>
 
                         <form action="/delete/{{ activity[0] }}?filter={{ filter_type }}" method="POST" style="display:inline;">
-                            <button class="btn btn-sm btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
                     </div>
 
                 </li>
             {% endfor %}
         </ul>
-
     </div>
+
 </div>
 
 </body>
